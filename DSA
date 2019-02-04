@@ -1,0 +1,266 @@
+import java.time.Year;
+import java.util.ArrayList;
+import java.util.Scanner;
+
+public class Kuya {
+    public static void createSection(ArrayList<ArrayList<String>> list) {
+        ArrayList<String> section = new ArrayList<>();
+        list.add(section);
+    }
+
+    public static void AddStudent(ArrayList<ArrayList<String>> list, int index, String name) {
+        list.get(index).add(name);
+    }
+
+    public static void DisplayStudents(ArrayList<ArrayList<String>> list, int index) {
+        ArrayList<String> Students = list.get(index);
+        for (String student : Students) {
+            System.out.println(student);
+        }
+    }
+
+    public static void main(String args[]) {
+        Scanner input = new Scanner(System.in);
+        String menu;
+
+        int yearlevel = 1;
+        int matrix[][] = new int[5][];
+        ArrayList<ArrayList<String>> Firstyear = new ArrayList<>();
+        ArrayList<ArrayList<String>> Secondyear = new ArrayList<>();
+        ArrayList<ArrayList<String>> Thirdyear = new ArrayList<>();
+        ArrayList<ArrayList<String>> Fourthyear = new ArrayList<>();
+        ArrayList<String> sectionFirstYear = new ArrayList<>();
+        ArrayList<String> sectionSecondYear = new ArrayList<>();
+        ArrayList<String> sectionThirdtYear = new ArrayList<>();
+        ArrayList<String> sectionFourthYear = new ArrayList<>();
+        String year;
+        //Return//
+        do {
+            String choice = "";
+            boolean invalidchoice = false;
+            while (!invalidchoice) {
+
+                System.out.println("Pamantasan ng Lungsod ng Marikina");
+                System.out.println("College" + "\nA.BS Information Technology" + "\nB.BS Education" + "\nC.BS Criminology" + "\nD.BS Accountancy" +
+                        "\nE.BS Business administration");
+                System.out.print("\nEnter your choice: ");
+                choice = input.next();
+                input.nextLine();
+
+                //***********************invalid choices********************//
+                if (!(choice.equalsIgnoreCase("a")) || (choice.equalsIgnoreCase("b")) || (choice.equalsIgnoreCase("c")) ||
+                        (choice.equalsIgnoreCase("d"))) {
+                    System.out.println("Invalid input!");
+                } else {
+                    invalidchoice = true;
+                }
+            }
+
+
+
+            //**********************Choice courses*********************//
+            if (choice.equalsIgnoreCase("a")) {
+                System.out.println("Welcome to College of BS Information Technology");
+            } else if (choice.equalsIgnoreCase("b")) {
+                System.out.println("Welcome to College of BS Education");
+            } else if (choice.equalsIgnoreCase("c")) {
+                System.out.println("Welcome to College of BS Criminology");
+            } else if (choice.equalsIgnoreCase("d")) {
+                System.out.println("Welcome to College of BS Accountancy");
+            } else if (choice.equalsIgnoreCase("e")) {
+                System.out.println("Welcome to College of BS Business Administration");
+            }
+            //***********************invalid choices********************//
+            do{
+            boolean invalid = false;
+            while (!invalid) {
+                System.out.println("Choose the year level  you want to create new section:");
+                System.out.println("A. 1st year");
+                System.out.println("B. 2nd year");
+                System.out.println("C. 3rd year");
+                System.out.println("D. 4th year");
+
+                System.out.print("Enter your choice:");
+                year = input.nextLine();
+                if (!(year.equalsIgnoreCase("a") || year.equalsIgnoreCase("b")
+                        || year.equalsIgnoreCase("c") || year.equalsIgnoreCase("d")
+                        || year.equalsIgnoreCase("e"))) {
+                    System.out.println("Invalid year input!");
+                } else {
+                    invalid = true;
+                }
+                if (year.equalsIgnoreCase("A")) {
+                    yearlevel = 1;
+                } else if (year.equalsIgnoreCase("B")) {
+                    yearlevel = 2;
+                } else if (year.equalsIgnoreCase("C")) {
+                    yearlevel = 3;
+                } else if (year.equalsIgnoreCase("D")) {
+                    yearlevel = 4;
+                }
+
+            }
+            String YearLevel = "";
+            if (yearlevel == 1) {
+                YearLevel = "1st year";
+            } else if (yearlevel == 2) {
+                YearLevel = "2nd year";
+            } else if (yearlevel == 3) {
+                YearLevel = "3rd year";
+            } else if (yearlevel == 4) {
+                YearLevel = "4th year";
+            }
+
+            System.out.println("How many section you want to create for " + YearLevel + "?: ");
+            int noOfSection = input.nextInt();
+            input.nextLine();
+            String sectionName;
+
+
+            for (int i = 0; i < noOfSection; i++) {
+
+                if (yearlevel == 1) {
+                    System.out.print("Enter Section Name: ");
+                    sectionName = input.nextLine();
+                    sectionFirstYear.add(sectionName);
+                    createSection(Firstyear);
+                } else if (yearlevel == 2) {
+                    System.out.print("Enter Section Name: ");
+                    sectionName = input.nextLine();
+                    sectionSecondYear.add(sectionName);
+                    createSection(Secondyear);
+                } else if (yearlevel == 3) {
+                    System.out.print("Enter Section Name: ");
+                    sectionName = input.nextLine();
+                    sectionThirdtYear.add(sectionName);
+                    createSection(Thirdyear);
+                } else if (yearlevel == 4) {
+                    System.out.print("Enter Section Name: ");
+                    sectionName = input.nextLine();
+                    sectionFourthYear.add(sectionName);
+                    createSection(Fourthyear);
+                }
+            }
+
+            if (yearlevel == 1) {
+                int i = 1;
+                for (String section : sectionFirstYear) {
+                    System.out.println("Section #" + i + ". " + section);
+                    i++;
+                }
+            } else if (yearlevel == 2) {
+                int i = 1;
+                for (String section : sectionSecondYear) {
+                    System.out.println("Section #" + i + ". " + section);
+                    i++;
+                }
+            } else if (yearlevel == 3) {
+                int i = 1;
+                for (String section : sectionThirdtYear) {
+                    System.out.println("Section #" + i + ". " + section);
+                    i++;
+                }
+            } else if (yearlevel == 4) {
+                int i = 1;
+                for (String section : sectionFourthYear) {
+                    System.out.println("Section #" + i + ". " + section);
+                    i++;
+                }
+            }
+            do {
+                System.out.println("Do you want to add students or view students? add or Display");
+                String addordisplay = input.nextLine();
+                int sectionNumber = 0;
+                boolean wrong = false;
+                while (!wrong) {
+                    System.out.print("Enter the section #: ");
+                    sectionNumber = input.nextInt();
+                    input.nextLine();
+                    if (sectionNumber > noOfSection || sectionNumber <= 0) {
+                        System.out.println("invalid input!");
+                    } else {
+                        wrong = true;
+                    }
+                }
+                if (addordisplay.equalsIgnoreCase("add")) {
+                    if (yearlevel == 1) {
+                        System.out.println("How many students?: ");
+                        int numberOfStudents = input.nextInt();
+                        input.nextLine();
+                        for (int j = 0; j < numberOfStudents; j++) {
+                            System.out.print("Enter Student Name: ");
+                            String studentName = input.nextLine();
+                            AddStudent(Firstyear, sectionNumber - 1, studentName);
+                        }
+                    } else if (yearlevel == 2) {
+                        System.out.println("How many students?: ");
+                        int numberOfStudents = input.nextInt();
+                        input.nextLine();
+                        for (int j = 0; j < numberOfStudents; j++) {
+                            System.out.print("Enter Student Name: ");
+                            String studentName = input.nextLine();
+                            AddStudent(Secondyear, sectionNumber - 1, studentName);
+                        }
+                    } else if (yearlevel == 3) {
+                        System.out.println("How many students?: ");
+                        int numberOfStudents = input.nextInt();
+                        input.nextLine();
+                        for (int j = 0; j < numberOfStudents; j++) {
+                            System.out.print("Enter Student Name: ");
+                            String studentName = input.nextLine();
+                            AddStudent(Thirdyear, sectionNumber - 1, studentName);
+                        }
+                    } else if (yearlevel == 4) {
+                        System.out.println("How many students?: ");
+                        int numberOfStudents = input.nextInt();
+                        input.nextLine();
+                        for (int j = 0; j < numberOfStudents; j++) {
+                            System.out.print("Enter Student Name: ");
+                            String studentName = input.nextLine();
+                            AddStudent(Fourthyear, sectionNumber - 1, studentName);
+                        }
+                    }
+
+                }
+
+                // else if (addordisplay.equalsIgnoreCase("Display")) {
+                if (yearlevel == 1) {
+                    DisplayStudents(Firstyear, sectionNumber - 1);
+                } else if (yearlevel == 2) {
+                    System.out.println("How many students?: ");
+                    int numberOfStudents = input.nextInt();
+                    input.nextLine();
+                    for (int j = 0; j < numberOfStudents; j++) {
+                        System.out.print("Enter Student Name: ");
+                        String studentName = input.nextLine();
+                        AddStudent(Secondyear, sectionNumber - 1, studentName);
+                    }
+                } else if (yearlevel == 3) {
+                    System.out.println("How many students?: ");
+                    int numberOfStudents = input.nextInt();
+                    input.nextLine();
+                    for (int j = 0; j < numberOfStudents; j++) {
+                        System.out.print("Enter Student Name: ");
+                        String studentName = input.nextLine();
+                        AddStudent(Thirdyear, sectionNumber - 1, studentName);
+                    }
+                } else if (yearlevel == 4) {
+                    System.out.println("How many students?: ");
+                    int numberOfStudents = input.nextInt();
+                    input.nextLine();
+                    for (int j = 0; j < numberOfStudents; j++) {
+                        System.out.print("Enter Student Name: ");
+                        String studentName = input.nextLine();
+                        AddStudent(Fourthyear, sectionNumber - 1, studentName);
+                    }
+                    //}
+                }
+                System.out.println("Return to section menu|year level menu|course menu");
+                menu = input.next();
+            } while (menu.equalsIgnoreCase("course"));
+        } while (menu.equalsIgnoreCase("section"));
+    }while(menu.equalsIgnoreCase("year level"));
+    }
+}
+
+
